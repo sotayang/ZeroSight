@@ -294,3 +294,9 @@ python evaluate_results/evaluate.py --all_queries_file_path /path_to_all_queries
 When evaluating ZS-CIR retrieval results, 'all_queries_file_path' is the path of all queries in ZeroSight. 
 
 When evaluating CIR retrieval results, 'all_queries_file_path' is the path of all queries in the test set of ZeroSight. 
+
+## **Visualization**
+
+Examples of our ZeroSight dataset. We divide all queries into six categories, including Addition, Subtraction, Viewpoint Change, Background Change, Attribute Change and Relative Statement. The words in relative captions, highlighted in red, indicate the core characteristic of the category to which the query belongs.
+
+![visualization](./assets/images/visualization.png)
