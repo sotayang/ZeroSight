@@ -41,7 +41,7 @@ pip install git+https://github.com/openai/CLIP.git
 
 #### **Directly download our filtered ZeroSight dataset (recommended):**
 
-(1) Download ZeroSight dataset from Hugging Face:
+(1) Download ZeroSight dataset from Hugging Face (We will open source it after the review process is completed)::
 
 
 
