@@ -26,7 +26,7 @@ Zero-Shot Composed Image Retrieval (ZS-CIR) has gained significant attention rec
 
 
 
-```
+```bash
 conda create -n ZeroSight -y python=3.9.6
 conda activate ZeroSight
 conda install -y -c pytorch pytorch=1.11.0 torchvision=0.12.0
@@ -45,7 +45,7 @@ pip install git+https://github.com/openai/CLIP.git
 
 
 
-```
+```bash
 git clone https://huggingface.co/XXX/ZeroSight
 ```
 
@@ -55,7 +55,7 @@ git clone https://huggingface.co/XXX/ZeroSight
 
 
 
-```
+```bash
 cd ZeroSight
 ```
 
@@ -67,7 +67,7 @@ Use the cat command to concatenate all the split files into a single file. Assum
 
 
 
-```
+```bash
 cat allVideos_tar_sep/allVideos.part_* > allVideo.tar.gz
 ```
 
@@ -79,7 +79,7 @@ Use the md5sum command to compute the checksum of the concatenated file and comp
 
 
 
-```
+```bash
 md5sum allVideo.tar.gz
 ```
 
@@ -89,7 +89,7 @@ The output should look like this:
 
 
 
-```
+```bash
 f5d08deb0d516c23caf8f1f6f0cda7d3  allVideo.tar.gz
 ```
 
@@ -103,7 +103,7 @@ Use the tar command to extract the contents of allVideo.tar.gz:
 
 
 
-```
+```bash
 tar -xzvf allVideo.tar.gz
 ```
 
@@ -130,7 +130,7 @@ Video frame extraction can be directly run the following code. Run the following
 
 
 
-```
+```bash
 python extract_video_frame/extract_video_frame_1s.py --data_dir allVideo --output_dir allVideo_frame
 ```
 
@@ -144,7 +144,7 @@ Firstly, run the following commands to get candidate reference images after gpt4
 
 
 
-```
+```bash
 python generate_reference_images/filterReferImg_GPT4o.py --video_frame_folders_path /path_to_your_video_frame_folder --gpt4o_referImgs_files_path /path_to_save_candidate_reference_images_after_gpt4o
 ```
 
@@ -154,7 +154,7 @@ Then, run the following commands to get candidate reference images after ViT fil
 
 
 
-```
+```bash
 python generate_reference_images/filterReferSmiImgs_ViT.py --gpt4o_referImgs_files_path /path_to_save_candidate_reference_images_after_gpt4o --vit_referImgs_files_path /path_to_save_candidate_reference_images_after_vit
 ```
 
@@ -164,7 +164,7 @@ Lastly, run the following commands to get final reference images.
 
 
 
-```
+```bash
 python generate_reference_images/filterReferSmiImgs_CLIP.py  --vit_referImgs_files_path /path_to_save_candidate_reference_images_after_vit --referImgs_files_path /path_to_save_reference_images
 ```
 
@@ -178,7 +178,7 @@ Firstly, run the following commands to get candidate target images after ViT fil
 
 
 
-```
+```bash
 python generate_multiple_target_images/filterTargetImgs_VIT.py --video_frame_folders_path /path_to_your_video_frame_folder --referImgs_files_path /path_to_save_reference_images --vit_targetImgs_files_path /path_to_save_candidate_target_images_after_vit
 ```
 
@@ -188,7 +188,7 @@ Then, run the following commands to get candidate target images after CLIP filte
 
 
 
-```
+```bash
 python generate_multiple_target_images/filterTargetImgs_CLIP.py --vit_targetImgs_files_path /path_to_save_candidate_target_images_after_vit --clip_targetImgs_files_path /path_to_save_candidate_target_images_after_clip
 ```
 
@@ -198,7 +198,7 @@ Lastly, run the following commands to get multiple target images.
 
 
 
-```
+```bash
 python generate_multiple_target_images/filterTargetImgs_SELF.py  --clip_targetImgs_files_path /path_to_save_candidate_target_images_after_clip --targetImgs_files_path /path_to_save_multiple_target_images
 ```
 
@@ -212,7 +212,7 @@ Firstly, run the following commands to get candidate relative captions after GPT
 
 
 
-```
+```bash
 python generate_relative_captions/generateRelativeCap_GPT4o.py --targetImgs_files_path /path_to_save_multiple_target_images --gpt4o_relativeCaptions_files_path /path_to_save_candidate_relative_captions_after_gpt4o
 ```
 
@@ -222,7 +222,7 @@ Then, run the following commands to get candidate relative captions after BERT f
 
 
 
-```
+```bash
 python generate_relative_captions/filterRelativeCap_Bert.py --gpt4o_relativeCaptions_files_path /path_to_save_candidate_relative_captions_after_gpt4o --bert_relativeCaptions_files_path /path_to_save_candidate_relative_captions_after_bert
 ```
 
@@ -232,7 +232,7 @@ Lastly, run the following commands to get final relative captions.
 
 
 
-```
+```bash
 python generate_relative_captions/generateFinalRelativeCap.py  --bert_relativeCaptions_files_path /path_to_save_candidate_relative_captions_after_bert --relativeCaptions_files_path /path_to_save_relative_captions
 ```
 
@@ -255,7 +255,7 @@ The results file should be formatted as the following example:
 
 
 
-```
+```bash
 {
 	"0": [
   	"/path/to/local/images/folder/9761.jpg",
@@ -285,7 +285,7 @@ Then, run the following commands to evaluate your ZS-CIR results or CIR results 
 
 
 
-```
+```bash
 python evaluate_results/evaluate.py --all_queries_file_path /path_to_all_queries --results_file_path /path_to_your_top-50_retrieval_results
 ```
 
