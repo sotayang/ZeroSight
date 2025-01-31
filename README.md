@@ -5,13 +5,16 @@
 This is the **code repository** of the paper "Never Seen Before: Benchmarking Genuine Zero-Shot Composed Image Retrieval with Consistent Video-Sourced Datasets".
 
 ## **Overview**
-
 **Comparison of composed image retrieval among existing datasets.**
 
 ![overview](./assets/images/comparison1.png)
 **Comparison of existing ZS-CIR dataset construction pipelines.**
 
 ![overview](./assets/images/comparison2.png)
+
+**Overview of the proposed ZeroSight framework (Updated).**
+
+![overview](./assets/images/framework_new.png)
 
 ### **Abstract**
 
