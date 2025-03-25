@@ -1,10 +1,14 @@
-# **ZeroSight**
 
-### **Never Seen Before: Benchmarking Genuine Zero-Shot Composed Image Retrieval with Consistent Video-Sourced Datasets**
+<div align="center">
+
+# **Never Seen Before: Benchmarking Genuine Zero-Shot Composed Image Retrieval with Consistent Video-Sourced Datasets**
+
+</div>
+
 
 This is the **code repository** of the paper "Never Seen Before: Benchmarking Genuine Zero-Shot Composed Image Retrieval with Consistent Video-Sourced Datasets".
 
-## **Overview**
+## **Overview of ZeroSight**
 **Comparison of composed image retrieval among existing datasets.**
 
 ![overview](./assets/images/comparison1.png)
@@ -12,14 +16,9 @@ This is the **code repository** of the paper "Never Seen Before: Benchmarking Ge
 
 ![overview](./assets/images/comparison2.png)
 
-**Overview of the proposed ZeroSight framework (Updated).**
-
-![overview](./assets/images/framework_new.png)
-
 ### **Abstract**
 
-Zero-Shot Composed Image Retrieval (ZS-CIR) has gained significant attention recently, aiming to retrieve a target image based on a query composed of a reference image and a relative caption without any training samples. Existing ZS-CIR datasets often suffer from inconsistencies between reference and target images due to noisy data sources, and they do not achieve a true zero-shot scenario as they use public image datasets that models like CLIP have been trained on. To tackle these challenges, we introduce ZeroSight, a novel benchmark for zero-shot composed image retrieval. It includes a dataset with consistent reference-target pairs sourced from videos, a data construction pipeline, and evaluation methods that consider the ranking of multiple positive and negative target images. We address the challenge of constructing visually and semantically consistent reference-target pairs by extracting frames from a single video and generating relative captions using LLM-assisted methods. To ensure a true zero-shot scenario, we use video data published after March 31, 2022, ensuring it was not included in CLIP's pre-training data. Our experimental results, obtained from 22 methods, reveal that the current ZS-CIR datasets and evaluation metrics result in inflated retrieval performance, exaggerating the capabilities of CIR methods. We expect ZeroSight to advance the research of ZS-CIR by providing a comprehensive and in-depth analysis of both current ZS-CIR and CIR methods. Our benchmark and experimental results can be accessed at https://anonymous.4open.science/r/ZeroSight-CFE1.
-
+Zero-Shot Composed Image Retrieval (ZS-CIR) aims to retrieve a target image based on a query composed of a reference image and a relative caption without training samples. Existing ZS-CIR datasets often suffer from inconsistencies between reference and target images due to noisy image sources, and do not achieve a true zero-shot scenario as they use public image datasets that models like CLIP have been trained on. To tackle these challenges, we introduce ZeroSight, a novel benchmark for ZS-CIR. It includes a dataset with consistent reference-target pairs sourced from videos, a data construction pipeline, and evaluation methods that consider the ranking of multiple positive and negative target images. We ensure visually and semantically consistent reference-target pairs by extracting frames from a single video and generating relative captions using LLM-assisted methods. To ensure a true zero-shot scenario, we use video data published after March 31, 2022, ensuring it was not included in CLIP's pre-training data. Additionally, we propose a training-free MLLM-driven method, SC4CIR (Symmetric Consistency for CIR), which can effectively identify hard negative targets through 3 symmetric consistency checks. This method is plug-and-play, seamlessly integrating with various CIR methods and significantly improving performance. Our experimental results from 27 methods reveal that current ZS-CIR datasets and evaluation metrics result in inflated retrieval performance, exaggerating the capabilities of CIR methods. Our benchmark and models can be accessed at https://anonymous.4open.science/r/ZeroSight-CFE1.
 ## **Getting Started**
 
 ### **Installation**
@@ -125,7 +124,7 @@ Download the YT-Temporal-1B dataset following the instructions in the [**officia
 
 This section provides instructions for reproducing the queries of ZeroSigth.
 
-![framework](./assets/images/framework.jpeg)
+![framework](./assets/images/framework_new.png)
 
 ### **Video Frame Extracting**
 
@@ -302,6 +301,7 @@ When evaluating CIR retrieval results, 'all_queries_file_path' is the path of al
 ## **SC4CIR**
 
 Run the following commands to improve your model performance on CIRCO test set.  You can choose either of the following two processes to improve, or you can choose both.
+![SC4CIR](./assets/images/SC4CIR.png)
 
 ### **Reverse Process 1**
 
