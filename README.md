@@ -298,6 +298,66 @@ When evaluating ZS-CIR retrieval results, 'all_queries_file_path' is the path of
 
 When evaluating CIR retrieval results, 'all_queries_file_path' is the path of all queries in the test set of ZeroSight. 
 
+
+## **SC4CIR**
+
+Run the following commands to improve your model performance on CIRCO test set.  You can choose either of the following two processes to improve, or you can choose both.
+
+### **Reverse Process 1**
+
+Firstly, run the following commands to generate anti-query after reverse process 1.
+
+
+
+```bash
+python SC4CIR/Symmetric_Consistency_Checking/reverse_process_1.py --circo_test_set_path /path_to_circo_test_set --model_results_path /path_to_your_model_results_on_circo_test_set --output_anti_query_path /path_to_save_output_anti_query
+```
+
+
+
+Then, test your model on the anti-query and you can get results after reverse process 1.
+
+Lastly, run the following commands to get re-ranked results after reverse process 1 with the format above.
+
+
+
+```bash
+python SC4CIR/Positive-Negative_Re-Ranking/process_1_re-ranking.py --model_results_path /path_to_your_original_model_results_with_similarities --process_1_model_results_path /path_to_your_model_results_with_similarities_after_process_1 --output_process_1_rerank_path /path_to_save_re-ranked_results_after_process_1
+```
+
+
+
+### **Reverse Process 2**
+
+Firstly, run the following commands to generate anti-caption after reverse process 2.
+
+
+
+```bash
+python SC4CIR/Symmetric_Consistency_Checking/reverse_process_2.py --circo_test_set_path /path_to_circo_test_set --model_results_path /path_to_your_model_results_on_circo_test_set --output_anti_caption_path /path_to_save_output_anti_caption
+```
+
+
+
+Then, run the following commands to get re-ranked results after reverse process 2 with the format above.
+
+
+
+```bash
+python SC4CIR/Positive-Negative_Re-Ranking/process_2_re-ranking.py --model_results_path /path_to_your_original_model_results_with_similarities --anti_caption_path /path_to_save_output_anti_caption --output_process_2_rerank_path /path_to_save_re-ranked_results_after_process_2
+```
+
+
+
+Lastly, run the following commands to get re-ranked results after reverse process 1 and 2 with the format above.
+
+
+
+```bash
+python SC4CIR/Positive-Negative_Re-Ranking/re-ranking.py --model_results_path /path_to_your_original_model_results_with_similarities --process_1_model_results_path /path_to_your_model_results_with_similarities_after_process_1 --anti_caption_path /path_to_save_output_anti_caption --output_rerank_path /path_to_save_re-ranked_results_after_process_1_and_2
+```
+
+
 ## **Visualization**
 
 Examples of our ZeroSight dataset. We divide all queries into six categories, including Addition, Subtraction, Viewpoint Change, Background Change, Attribute Change and Relative Statement. The words in relative captions, highlighted in red, indicate the core characteristic of the category to which the query belongs.
