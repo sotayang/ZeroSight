@@ -63,7 +63,7 @@ for data in datas_process_2:
 
     similarities_process_2 = []
     for i, score in enumerate(similarity[0, 1:]):
-        similarities.append(float(score.item()))
+        similarities_process_2.append(float(score.item()))
     output_candidate_Imgs_Id_process_2 = data["candidate_Imgs_Id"]
 
     similarities_process_1 = rank_set[str(data["id"])]["sim_values"]

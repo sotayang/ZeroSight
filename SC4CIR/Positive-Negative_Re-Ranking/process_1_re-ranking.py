@@ -46,7 +46,7 @@ for key, value in rank_set.items():
     ##############################################################################################
     ##############################################################################################
 
-    zipped_pairs = zip(str(value["candidate_img_id"]), Score_of_process_1)
+    zipped_pairs = zip(value["candidate_img_id"], Score_of_process_1)
     sorted_pairs = sorted(zipped_pairs, key=lambda x: x[1])
 
     Score_of_process_1 = [element[1] for element in sorted_pairs]
