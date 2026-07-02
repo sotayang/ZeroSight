@@ -32,7 +32,7 @@ def preprocess_image(image_path):
     inputs = feature_extractor(images=image, return_tensors="pt")
     return inputs
 
-for root, dirs, files in os.walk(args.referImgs_folders_path):
+for root, dirs, files in os.walk(args.referImgs_files_path):
     files.sort()
     for name in tqdm(files):
         output = []
@@ -81,7 +81,7 @@ for root, dirs, files in os.walk(args.referImgs_folders_path):
 
             output.append(output_data)
 
-        json_filename = args.vit_targetImgs_folders_path + imagesName + '.json'
+        json_filename = args.vit_targetImgs_files_path + imagesName + '.json'
         with open(json_filename, 'w', encoding='utf-8') as json_file:
             json.dump(output, json_file, ensure_ascii=False, indent=4)
         print(f"Data has been written to {json_filename}")

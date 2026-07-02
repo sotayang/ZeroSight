@@ -31,7 +31,7 @@ def preprocess_image(image_path):
     inputs = feature_extractor(images=image, return_tensors="pt")
     return inputs
 
-for root, dirs, files in os.walk(args.gpt4o_referImgs_folders_path):
+for root, dirs, files in os.walk(args.gpt4o_referImgs_files_path):
     for name in tqdm(files):
         referImgPath = os.path.join(root,name)
         with open(referImgPath, 'r', encoding='utf-8') as file:
@@ -59,7 +59,7 @@ for root, dirs, files in os.walk(args.gpt4o_referImgs_folders_path):
             'referenceImgs':lastImgs
         }
 
-        json_filename = args.vit_referImgs_folders_path + imagesName + '.json'
+        json_filename = args.vit_referImgs_files_path + imagesName + '.json'
 
         with open(json_filename, 'w', encoding='utf-8') as json_file:
             json.dump(output, json_file, ensure_ascii=False, indent=4)

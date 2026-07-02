@@ -15,7 +15,7 @@ parser.add_argument("--clip_targetImgs_files_path", type=str, help="Folder path 
 
 args = parser.parse_args()
 
-for root, dirs, files in os.walk(args.vit_targetImgs_folders_path):
+for root, dirs, files in os.walk(args.vit_targetImgs_files_path):
     for name in tqdm(files):
         imagesAll = []
         referImgPath = os.path.join(root,name)
@@ -72,7 +72,7 @@ for root, dirs, files in os.walk(args.vit_targetImgs_folders_path):
 
                 output.append(output_data)
 
-        json_filename = args.clip_targetImgs_folders_path + imagesName + '.json'
+        json_filename = args.clip_targetImgs_files_path + imagesName + '.json'
 
         with open(json_filename, 'w', encoding='utf-8') as json_file:
             json.dump(output, json_file, ensure_ascii=False, indent=4)

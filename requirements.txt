@@ -1,0 +1,17 @@
+# Core deep learning stack (see README for the recommended conda install of
+# torch==1.11.0 / torchvision==0.12.0 built against your CUDA version).
+torch>=1.11.0
+torchvision>=0.12.0
+
+# Model / feature-extraction utilities
+transformers
+sentence-transformers
+git+https://github.com/openai/CLIP.git
+
+# Data processing and evaluation
+numpy
+opencv-python
+Pillow
+scikit-learn
+tqdm
+requests

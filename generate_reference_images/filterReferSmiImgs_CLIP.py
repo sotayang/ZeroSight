@@ -15,7 +15,7 @@ parser.add_argument("--referImgs_files_path", type=str, help="Folder path of fil
 
 args = parser.parse_args()
 
-for root, dirs, files in os.walk(args.vit_referImgs_folders_path):
+for root, dirs, files in os.walk(args.vit_referImgs_files_path):
     for name in tqdm(files):
         referImgPath = os.path.join(root,name)
         imagesName, _ = os.path.splitext(name)
@@ -54,7 +54,7 @@ for root, dirs, files in os.walk(args.vit_referImgs_folders_path):
                 'referenceImgs':referImgs
             }
 
-        json_filename = args.referImgs_folders_path + imagesName + '.json'
+        json_filename = args.referImgs_files_path + imagesName + '.json'
         with open(json_filename, 'w', encoding='utf-8') as json_file:
             json.dump(output, json_file, ensure_ascii=False, indent=4)
 

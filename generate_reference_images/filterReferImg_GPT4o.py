@@ -72,9 +72,9 @@ for root, dirs, files in os.walk(args.video_frame_folders_path):
                     answer = gpt4o_client.vision(prompt_noFormer, imagesFetched, max_cycle = 20)
                 row_number = re.findall(r'\d+', answer)
                 while int(row_number[0]) > len(imagesFetched) or int(row_number[0]) < 0:
-                    answer = gpt4v_client.vision(prompt_noFormer, imagesFetched, max_cycle = 20)
+                    answer = gpt4o_client.vision(prompt_noFormer, imagesFetched, max_cycle = 20)
                     while answer is None:
-                        answer = gpt4v_client.vision(prompt_noFormer, imagesFetched, max_cycle = 20)
+                        answer = gpt4o_client.vision(prompt_noFormer, imagesFetched, max_cycle = 20)
                     row_number = re.findall(r'\d+', answer)
                 if int(row_number[0]) > 0:
                     referImgLast = imagesFetched[int(row_number[0])-1]
@@ -94,9 +94,9 @@ for root, dirs, files in os.walk(args.video_frame_folders_path):
                     answer = gpt4o_client.vision(prompt_withFormer, imagesFetched, max_cycle = 20)
                 row_number = re.findall(r'\d+', answer)
                 while int(row_number[0]) > len(imagesFetched) or int(row_number[0]) < 1:
-                    answer = gpt4v_client.vision(prompt_withFormer, imagesFetched, max_cycle = 20)
+                    answer = gpt4o_client.vision(prompt_withFormer, imagesFetched, max_cycle = 20)
                     while answer is None:
-                        answer = gpt4v_client.vision(prompt_withFormer, imagesFetched, max_cycle = 20)
+                        answer = gpt4o_client.vision(prompt_withFormer, imagesFetched, max_cycle = 20)
                     row_number = re.findall(r'\d+', answer)
                 if int(row_number[0]) > 1:
                     referImgLast = imagesFetched[int(row_number[0])-1]
@@ -111,7 +111,7 @@ for root, dirs, files in os.walk(args.video_frame_folders_path):
         output = {
             'referenceImages':referImgs
         }
-        json_filename = args.candidate_referImgs_folders_path + dir + '.json'
+        json_filename = args.gpt4o_referImgs_files_path + dir + '.json'
         with open(json_filename, 'w', encoding='utf-8') as json_file:
             json.dump(output, json_file, ensure_ascii=False, indent=4)
 
